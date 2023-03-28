@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProficiencyTest.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
+        WindowStyle="None"
+        Title="Proficiency Test" Height="400" Width="500">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" LastChildFill="False" Background="LightGray">
+            <Button DockPanel.Dock="Left" x:Name="Collapse" Height="50" Width="50" BorderThickness="0" Background="LightGray" Margin="5 0 5 0">
+                <Button.Content>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="./Images/collapse.png" Height="25" />
+                        <TextBlock Text="Collapse"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button DockPanel.Dock="Left" x:Name="Expand" Height="50" Width="50" BorderThickness="0" Background="LightGray">
+                <Button.Content>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="./Images/expand.png" Height="25" />
+                        <TextBlock Text="Expand"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DockPanel>
+        <DockPanel Grid.Row="2" LastChildFill="False" Background="LightGray">
+            <Button DockPanel.Dock="Right" x:Name="Start" Height="30" Width="80" Margin="5 5 10 5" HorizontalContentAlignment="Left" BorderThickness="0" Background="Silver">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Source="./Images/start.png" Height="10" Margin="5 0 5 0"/>
+                        <TextBlock Text="Start" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button DockPanel.Dock="Right" x:Name="Back" Height="30" Width="80" HorizontalContentAlignment="Left" BorderThickness="0" Background="Silver">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Source="./Images/back.png" Height="10" Margin="5 0 5 0"/>
+                        <TextBlock Text="Back" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </DockPanel>
     </Grid>
 </Window>

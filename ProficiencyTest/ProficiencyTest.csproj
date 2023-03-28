@@ -8,11 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Images\back.png" />
+    <None Remove="Views\Images\collapse.png" />
+    <None Remove="Views\Images\expand.png" />
+    <None Remove="Views\Images\start.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Caliburn.Micro" Version="4.0.212" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Images\back.png" />
+    <Resource Include="Views\Images\collapse.png" />
+    <Resource Include="Views\Images\expand.png" />
+    <Resource Include="Views\Images\start.png" />
   </ItemGroup>
 
 </Project>
