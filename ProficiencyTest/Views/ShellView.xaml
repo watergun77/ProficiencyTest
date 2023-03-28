@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProficiencyTest.Views"
         xmlns:vm="clr-namespace:ProficiencyTest.ViewModels"
+        xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
         mc:Ignorable="d"
         BorderThickness="0" WindowStartupLocation="CenterScreen"
         Title="Proficiency Test" Height="400" Width="500">
@@ -53,7 +54,8 @@
                     </CheckBox>                                            
                 </HierarchicalDataTemplate>
                 <DataTemplate DataType="{x:Type vm:ChildViewModel}">                    
-                        <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3" >
+                        <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3"                                   
+                                  cal:Message.Attach="[Event Click] = [Action UpdateIsBackEnabled]" >
                             <CheckBox.Content>
                                 <TextBlock>
                                     <Run Text="Test"/>

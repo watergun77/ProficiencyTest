@@ -108,6 +108,11 @@ namespace ProficiencyTest.ViewModels
                 }
             }
         }
+
+        public void UpdateIsBackEnabled()
+        {
+            NotifyOfPropertyChange(() => IsBackEnabled);
+        }
         public void Back()
         {
             if (Parents != null)
@@ -119,6 +124,7 @@ namespace ProficiencyTest.ViewModels
                         child.IsSelected = false;
                     }
                 }
+                UpdateIsBackEnabled();
             }
         }
         public void Cancel()
