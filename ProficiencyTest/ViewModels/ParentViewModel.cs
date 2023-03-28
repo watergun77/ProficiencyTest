@@ -2,7 +2,7 @@
 
 namespace ProficiencyTest.ViewModels
 {
-    public class ParentViewModel
+    public class ParentViewModel : Screen
     {
         private BindableCollection<ChildViewModel> children = new();
         public BindableCollection<ChildViewModel> Children
@@ -23,6 +23,20 @@ namespace ProficiencyTest.ViewModels
                     return 0;
                 }
             }            
+        }
+
+        private bool? isSelected = false;
+        public bool? IsSelected
+        {
+            get
+            {
+                return isSelected;
+            }
+            set
+            {
+                isSelected = value;
+                NotifyOfPropertyChange(() => IsSelected);
+            }
         }
     }
 }

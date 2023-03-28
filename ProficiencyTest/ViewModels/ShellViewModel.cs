@@ -84,6 +84,43 @@ namespace ProficiencyTest.ViewModels
                 }
             }            
         }
+        public bool IsBackEnabled
+        {
+            get
+            {
+                if(Parents != null)
+                {
+                    foreach(var parent in Parents)
+                    {
+                        foreach(var child in parent.Children)
+                        {
+                            if (child.IsSelected)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public void Back()
+        {
+            if (Parents != null)
+            {
+                foreach (var parent in Parents)
+                {
+                    foreach (var child in parent.Children)
+                    {
+                        child.IsSelected = false;
+                    }
+                }
+            }
+        }
         public void Cancel()
         {            
             TryCloseAsync();

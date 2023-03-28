@@ -42,19 +42,25 @@
         </DockPanel>
         <TreeView Grid.Row="1" ItemsSource="{Binding Parents, Mode=OneWay}">
             <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type vm:ParentViewModel}" ItemsSource="{Binding Children}">
-                    <StackPanel Orientation="Horizontal" Margin="0 3 0 3">
-                        <CheckBox Content="Test" />
-                        <TextBlock Text="{Binding Major, Mode=OneWay}" Margin="5 -1 0 0"/>
-                    </StackPanel>
+                <HierarchicalDataTemplate DataType="{x:Type vm:ParentViewModel}" ItemsSource="{Binding Children}">                    
+                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3">
+                        <CheckBox.Content>
+                            <TextBlock>
+                                <Run Text="Test"/>
+                                <Run Text="{Binding Major, Mode=OneWay}"/>
+                            </TextBlock>
+                        </CheckBox.Content>
+                    </CheckBox>                                            
                 </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type vm:ChildViewModel}">
-                    <StackPanel Orientation="Horizontal" Margin="0 3 0 3">
-                        <CheckBox Content="Test" />
-                        <TextBlock Margin="5 -1 0 0">
-                            <Run Text="{Binding Major, Mode=OneWay}"/><Run Text="."/><Run Text="{Binding Minor, Mode=OneWay}"/>
-                        </TextBlock>
-                    </StackPanel>
+                <DataTemplate DataType="{x:Type vm:ChildViewModel}">                    
+                        <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3" >
+                            <CheckBox.Content>
+                                <TextBlock>
+                                    <Run Text="Test"/>
+                                    <Run Text="{Binding Major, Mode=OneWay}"/><Run Text="."/><Run Text="{Binding Minor, Mode=OneWay}"/>
+                                </TextBlock>
+                            </CheckBox.Content>                        
+                    </CheckBox>                    
                 </DataTemplate>
             </TreeView.Resources>
         </TreeView>
@@ -67,7 +73,8 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button DockPanel.Dock="Right" x:Name="Back" Height="30" Width="80" HorizontalContentAlignment="Left" BorderThickness="0" Background="Silver">
+            <Button DockPanel.Dock="Right" x:Name="Back" Height="30" Width="80" HorizontalContentAlignment="Left" BorderThickness="0" Background="Silver" 
+                    IsEnabled="{Binding IsBackEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Image Source="./Images/back.png" Height="10" Margin="5 0 5 0"/>
