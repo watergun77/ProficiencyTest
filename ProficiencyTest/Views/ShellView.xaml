@@ -34,7 +34,7 @@
                 <Button.Content>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="./Images/cancel.png" Height="25" />
-                        <TextBlock Text="Cancel" Foreground="Red"/>
+                        <TextBlock Text="Cancel" Foreground="Red"/>                        
                     </StackPanel>
                 </Button.Content>
             </Button>
@@ -52,9 +52,9 @@
                 <Button.Content>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Image Source="./Images/back.png" Height="10" Margin="5 0 5 0"/>
-                        <TextBlock Text="Back" Margin="5 0 0 0"/>
+                        <TextBlock Text="Back" Margin="5 0 0 0"/>                        
                     </StackPanel>
-                </Button.Content>
+                </Button.Content>                
             </Button>
         </DockPanel>
     </Grid>
