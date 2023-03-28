@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProficiencyTest.Views"
         mc:Ignorable="d"
-        WindowStyle="None"
+        WindowStyle="None" BorderThickness="0" WindowStartupLocation="CenterScreen"
         Title="Proficiency Test" Height="400" Width="500">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,6 +27,14 @@
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="./Images/expand.png" Height="25" />
                         <TextBlock Text="Expand"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button DockPanel.Dock="Right" x:Name="Cancel" Height="50" Width="50" BorderThickness="0" Background="LightGray">
+                <Button.Content>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <Image Source="./Images/cancel.png" Height="25" />
+                        <TextBlock Text="Cancel" Foreground="Red"/>
                     </StackPanel>
                 </Button.Content>
             </Button>

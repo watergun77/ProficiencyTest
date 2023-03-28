@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Views\Images\back.png" />
+    <None Remove="Views\Images\cancel.png" />
     <None Remove="Views\Images\collapse.png" />
     <None Remove="Views\Images\expand.png" />
     <None Remove="Views\Images\start.png" />
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <Resource Include="Views\Images\back.png" />
+    <Resource Include="Views\Images\cancel.png" />
     <Resource Include="Views\Images\collapse.png" />
     <Resource Include="Views\Images\expand.png" />
     <Resource Include="Views\Images\start.png" />
