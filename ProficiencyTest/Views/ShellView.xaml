@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProficiencyTest.Views"
+        xmlns:vm="clr-namespace:ProficiencyTest.ViewModels"
         mc:Ignorable="d"
-        WindowStyle="None" BorderThickness="0" WindowStartupLocation="CenterScreen"
+        BorderThickness="0" WindowStartupLocation="CenterScreen"
         Title="Proficiency Test" Height="400" Width="500">
     <Grid>
         <Grid.RowDefinitions>
@@ -39,6 +40,24 @@
                 </Button.Content>
             </Button>
         </DockPanel>
+        <TreeView Grid.Row="1" ItemsSource="{Binding Parents, Mode=OneWay}">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type vm:ParentViewModel}" ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal" Margin="0 3 0 3">
+                        <CheckBox Content="Test" />
+                        <TextBlock Text="{Binding Major, Mode=OneWay}" Margin="5 -1 0 0"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type vm:ChildViewModel}">
+                    <StackPanel Orientation="Horizontal" Margin="0 3 0 3">
+                        <CheckBox Content="Test" />
+                        <TextBlock Margin="5 -1 0 0">
+                            <Run Text="{Binding Major, Mode=OneWay}"/><Run Text="."/><Run Text="{Binding Minor, Mode=OneWay}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
         <DockPanel Grid.Row="2" LastChildFill="False" Background="LightGray">
             <Button DockPanel.Dock="Right" x:Name="Start" Height="30" Width="80" Margin="5 5 10 5" HorizontalContentAlignment="Left" BorderThickness="0" Background="Silver">
                 <Button.Content>

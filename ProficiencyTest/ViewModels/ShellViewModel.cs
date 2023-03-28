@@ -88,5 +88,6 @@ namespace ProficiencyTest.ViewModels
         {            
             TryCloseAsync();
         }
+
     }
 }
