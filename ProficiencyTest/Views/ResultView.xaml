@@ -1,0 +1,21 @@
+﻿<Window x:Class="ProficiencyTest.Views.ResultView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProficiencyTest.Views"
+        mc:Ignorable="d"
+        Title="Tests Selected" Height="450" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <ListView ItemsSource="{Binding SelectedTests, Mode=OneWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="Test" />
+                        <Run Text="{Binding Major}"/><Run Text="."/><Run Text="{Binding Minor}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

@@ -2,7 +2,7 @@
 {
     public class Test
     {
-        public int Major;
-        public int Minor;
+        public int Major { get; set; }
+        public int Minor { get; set; }
     }
 }

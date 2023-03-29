@@ -21,8 +21,9 @@ namespace ProficiencyTest.ViewModels
 
         public ShellViewModel()
         {
-            //IList<Test> tests = new List<Test>() 
-            //{ 
+            #region test1
+            //IList<Test> tests = new List<Test>()
+            //{
             //    new Test(){ Major=1, Minor=1 },
             //    new Test(){ Major=1, Minor=2 },
             //    new Test(){ Major=1, Minor=3 },
@@ -31,9 +32,32 @@ namespace ProficiencyTest.ViewModels
             //    new Test(){ Major=2, Minor=2 },
             //    new Test(){ Major=2, Minor=3 }
             //};
+            #endregion
 
+            #region test2
+            //IList<Test> tests = new List<Test>()
+            //{
+            //    new Test(){ Major=2, Minor=3 },
+            //    new Test(){ Major=1, Minor=1 },
+            //    new Test(){ Major=1, Minor=4 },
+            //    new Test(){ Major=2, Minor=1 },
+            //    new Test(){ Major=1, Minor=3 },
+            //    new Test(){ Major=2, Minor=2 },
+            //    new Test(){ Major=1, Minor=2 },
+            //};
+            #endregion
+
+            #region test3
             IList<Test> tests = new List<Test>()
             {
+                new Test(){ Major=4, Minor=2 },
+                new Test(){ Major=4, Minor=7 },
+                new Test(){ Major=4, Minor=5 },
+                new Test(){ Major=4, Minor=4 },
+                new Test(){ Major=4, Minor=3 },
+                new Test(){ Major=4, Minor=1 },
+                new Test(){ Major=4, Minor=6 },
+
                 new Test(){ Major=2, Minor=3 },
                 new Test(){ Major=1, Minor=1 },
                 new Test(){ Major=1, Minor=4 },
@@ -41,7 +65,17 @@ namespace ProficiencyTest.ViewModels
                 new Test(){ Major=1, Minor=3 },
                 new Test(){ Major=2, Minor=2 },
                 new Test(){ Major=1, Minor=2 },
+
+                new Test(){ Major=3, Minor=7 },
+                new Test(){ Major=3, Minor=6 },
+                new Test(){ Major=3, Minor=5 },
+                new Test(){ Major=3, Minor=4 },
+                new Test(){ Major=3, Minor=3 },
+                new Test(){ Major=3, Minor=2 },
+                new Test(){ Major=3, Minor=1 },
             };
+            #endregion
+
             createTree(tests);
         }
         private void createTree(IList<Test> tests)
@@ -55,35 +89,61 @@ namespace ProficiencyTest.ViewModels
 
                     if (Parents.Count > 0)
                     {
-                        // Check for existing Major
+                        // Check for existing Major.
                         bool exist = false;
                         foreach (var parent in Parents)
                         {
                             if (child.Major == parent.Major)
                             {
-                                parent.Children.Add(child);
+                                // Sort in ascending order while inserting new child.
+                                int pos = 0;
+                                for (int i = 0; i < parent.Children.Count; i++)
+                                {
+                                    if (parent.Children[i].Minor < child.Minor) // Sorting condition.
+                                    {
+                                        pos = i + 1; // Capture the right position.
+                                    }
+                                }
+                                parent.Children.Insert(pos, child); // Insert into the correct sorted position.
+
                                 exist = true;
                                 break;
                             }
                         }
-                        if (!exist)
+                        if (!exist) // Parent not yet exist.
                         {
                             // Create new parent
-                            ParentViewModel parent = new ParentViewModel();
-                            parent.Children.Add(child);
-                            Parents.Add(parent);
+                            createParent(child);
                         }
                     }
-                    else
+                    else // Parent not yet exist.
                     {
                         // Create new parent
-                        ParentViewModel parent = new ParentViewModel();
-                        parent.Children.Add(child);
-                        Parents.Add(parent);
+                        createParent(child);
                     }
                 }
             }
         }
+        private void createParent(ChildViewModel child)
+        {
+            if (Parents != null)
+            {
+                ParentViewModel parent = new ParentViewModel();
+                parent.Children.Add(child);
+
+                // Sort in ascending order while inserting new parent.
+                int pos = 0;
+                for (int i = 0; i < Parents.Count; i++)
+                {
+                    if (Parents[i].Major < parent.Major) // Sorting condition.
+                    {
+                        pos = i + 1; // Capture the right position.
+                    }
+                }
+                Parents.Insert(pos, parent); // Insert into the correct sorted position.
+            }
+        }
+
         public void Expand()
         {
             SetExpand(true);
@@ -189,7 +249,23 @@ namespace ProficiencyTest.ViewModels
         public bool IsStartEnabled => anyChildSelected;
         public void Start()
         {
+            if (Parents != null)
+            {
+                ResultViewModel resultVm = new ResultViewModel();
+                foreach (var parent in Parents)
+                {
+                    foreach (var child in parent.Children)
+                    {
+                        if (child.IsSelected)
+                        {
+                            resultVm.SelectedTests.Add(child.MyTest);
+                        }
+                    }
+                }
 
+                IWindowManager manager = new WindowManager();
+                manager.ShowDialogAsync(resultVm);
+            }
         }
         public void Cancel()
         {            

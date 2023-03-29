@@ -6,8 +6,9 @@ namespace ProficiencyTest.ViewModels
     public class ChildViewModel : Screen
     {
         private Test myTest = new();
-        public Test MyTest 
-        { 
+        public Test MyTest
+        {
+            get { return myTest; }
             set 
             {
                 myTest = value; 
