@@ -16,7 +16,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" LastChildFill="False" Background="LightGray">
-            <Button DockPanel.Dock="Left" x:Name="Collapse" Height="50" Width="50" BorderThickness="0" Background="LightGray" Margin="5 0 5 0">
+            <Button DockPanel.Dock="Left" x:Name="Collapse" Height="50" Width="50" BorderThickness="0" Background="LightGray" Margin="0 0 5 0">
                 <Button.Content>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <Image Source="./Images/collapse.png" Height="25" />
