@@ -55,7 +55,7 @@
                 </HierarchicalDataTemplate>
                 <DataTemplate DataType="{x:Type vm:ChildViewModel}">                    
                         <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3"                                   
-                                  cal:Message.Attach="[Event Click] = [Action UpdateIsBackEnabled]" >
+                                  cal:Message.Attach="[Event Click] = [Action UpdateStates]" >
                             <CheckBox.Content>
                                 <TextBlock>
                                     <Run Text="Test"/>
@@ -67,7 +67,8 @@
             </TreeView.Resources>
         </TreeView>
         <DockPanel Grid.Row="2" LastChildFill="False" Background="LightGray">
-            <Button DockPanel.Dock="Right" x:Name="Start" Height="30" Width="80" Margin="5 5 10 5" HorizontalContentAlignment="Left" BorderThickness="0" Background="Silver">
+            <Button DockPanel.Dock="Right" x:Name="Start" Height="30" Width="80" Margin="5 5 10 5" HorizontalContentAlignment="Left" BorderThickness="0" Background="Silver"
+                    IsEnabled="{Binding IsStartEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Image Source="./Images/start.png" Height="10" Margin="5 0 5 0"/>

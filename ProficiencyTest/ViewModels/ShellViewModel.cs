@@ -35,7 +35,7 @@ namespace ProficiencyTest.ViewModels
             IList<Test> tests = new List<Test>()
             {
                 new Test(){ Major=2, Minor=3 },
-                new Test(){ Major=1, Minor=1 },                                
+                new Test(){ Major=1, Minor=1 },
                 new Test(){ Major=1, Minor=4 },
                 new Test(){ Major=2, Minor=1 },
                 new Test(){ Major=1, Minor=3 },
@@ -51,7 +51,7 @@ namespace ProficiencyTest.ViewModels
             {
                 foreach (var test in tests)
                 {
-                    ChildViewModel child = new ChildViewModel() { MyTest = test };                    
+                    ChildViewModel child = new ChildViewModel() { MyTest = test };
 
                     if (Parents.Count > 0)
                     {
@@ -59,7 +59,7 @@ namespace ProficiencyTest.ViewModels
                         bool exist = false;
                         foreach (var parent in Parents)
                         {
-                            if(child.Major == parent.Major)
+                            if (child.Major == parent.Major)
                             {
                                 parent.Children.Add(child);
                                 exist = true;
@@ -82,37 +82,44 @@ namespace ProficiencyTest.ViewModels
                         Parents.Add(parent);
                     }
                 }
-            }            
+            }
         }
-        public bool IsBackEnabled
+        public void UpdateStates()
+        {
+            NotifyOfPropertyChange(() => IsBackEnabled);
+            NotifyOfPropertyChange(() => IsStartEnabled);
+        }
+
+        private bool anyChildSelected
         {
             get
             {
-                if(Parents != null)
+                if (Parents != null && Parents.Count > 0)
                 {
-                    foreach(var parent in Parents)
+                    foreach (var parent in Parents)
                     {
-                        foreach(var child in parent.Children)
+                        if (isChildSelected(parent))
                         {
-                            if (child.IsSelected)
-                            {
-                                return true;
-                            }
+                            return true;
                         }
                     }
-                    return false;
                 }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
         }
-
-        public void UpdateIsBackEnabled()
+            
+        private bool isChildSelected(ParentViewModel parent)
         {
-            NotifyOfPropertyChange(() => IsBackEnabled);
+            foreach (var child in parent.Children)
+            {
+                if (child.IsSelected)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
+        public bool IsBackEnabled => anyChildSelected;
         public void Back()
         {
             if (Parents != null)
@@ -124,8 +131,13 @@ namespace ProficiencyTest.ViewModels
                         child.IsSelected = false;
                     }
                 }
-                UpdateIsBackEnabled();
+                UpdateStates();
             }
+        }
+        public bool IsStartEnabled => anyChildSelected;
+        public void Start()
+        {
+
         }
         public void Cancel()
         {            
