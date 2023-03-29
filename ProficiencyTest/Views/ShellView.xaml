@@ -44,7 +44,8 @@
         <TreeView Grid.Row="1" ItemsSource="{Binding Parents, Mode=OneWay}">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type vm:ParentViewModel}" ItemsSource="{Binding Children}">                    
-                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3">
+                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3"
+                              cal:Message.Attach="[Event Click] = [Action UpdateStates($dataContext)]">
                         <CheckBox.Content>
                             <TextBlock>
                                 <Run Text="Test"/>
@@ -55,7 +56,7 @@
                 </HierarchicalDataTemplate>
                 <DataTemplate DataType="{x:Type vm:ChildViewModel}">                    
                         <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3"                                   
-                                  cal:Message.Attach="[Event Click] = [Action UpdateStates]" >
+                                  cal:Message.Attach="[Event Click] = [Action UpdateStates($dataContext)]" >
                             <CheckBox.Content>
                                 <TextBlock>
                                     <Run Text="Test"/>

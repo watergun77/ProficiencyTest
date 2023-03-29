@@ -84,12 +84,50 @@ namespace ProficiencyTest.ViewModels
                 }
             }
         }
-        public void UpdateStates()
+        public void UpdateStates(ChildViewModel? child = null)
         {
-            NotifyOfPropertyChange(() => IsBackEnabled);
-            NotifyOfPropertyChange(() => IsStartEnabled);
-        }
+            NotifyOfPropertyChange(() => IsBackEnabled); // Update Back button state
+            NotifyOfPropertyChange(() => IsStartEnabled); // Update Start button state
 
+            if(child != null) // check if this method is invoked by child
+            {
+                UpdateParentState(child); // Update parent's selection state
+            }
+        }
+        private void UpdateParentState(ChildViewModel child)
+        {            
+            if (Parents != null)
+            {
+                foreach (var parent in Parents)
+                {
+                    if (parent.Children.Contains(child)) // Find parent of child.
+                    {
+                        int selectCount = 0;
+                        foreach (var parentChild in parent.Children)
+                        {
+                            if (parentChild.IsSelected)
+                            {
+                                selectCount++;
+                            }
+                        }
+
+                        // Determine state of the parent.
+                        if (selectCount == 0) // All child are unselected.
+                        {
+                            parent.IsSelected = false;
+                        }
+                        else if (selectCount < parent.Children.Count) // One or more child is selected.
+                        {
+                            parent.IsSelected = null;
+                        }
+                        else // All children are selected.
+                        {
+                            parent.IsSelected = true;
+                        }
+                    }
+                }
+            }
+        }
         private bool anyChildSelected
         {
             get
@@ -106,8 +144,7 @@ namespace ProficiencyTest.ViewModels
                 }
                 return false;
             }
-        }
-            
+        }            
         private bool isChildSelected(ParentViewModel parent)
         {
             foreach (var child in parent.Children)
@@ -126,10 +163,7 @@ namespace ProficiencyTest.ViewModels
             {
                 foreach (var parent in Parents)
                 {
-                    foreach (var child in parent.Children)
-                    {
-                        child.IsSelected = false;
-                    }
+                    parent.IsSelected = false;
                 }
                 UpdateStates();
             }

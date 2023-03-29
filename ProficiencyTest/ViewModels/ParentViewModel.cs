@@ -35,6 +35,13 @@ namespace ProficiencyTest.ViewModels
             set
             {
                 isSelected = value;
+                if (isSelected != null)
+                {
+                    foreach (var child in Children)
+                    {
+                        child.IsSelected = isSelected.Value;
+                    }
+                }
                 NotifyOfPropertyChange(() => IsSelected);
             }
         }
