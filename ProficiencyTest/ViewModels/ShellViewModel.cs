@@ -22,16 +22,16 @@ namespace ProficiencyTest.ViewModels
         public ShellViewModel()
         {
             #region test1
-            //IList<Test> tests = new List<Test>()
-            //{
-            //    new Test(){ Major=1, Minor=1 },
-            //    new Test(){ Major=1, Minor=2 },
-            //    new Test(){ Major=1, Minor=3 },
-            //    new Test(){ Major=1, Minor=4 },
-            //    new Test(){ Major=2, Minor=1 },
-            //    new Test(){ Major=2, Minor=2 },
-            //    new Test(){ Major=2, Minor=3 }
-            //};
+            IList<Test> tests = new List<Test>()
+            {
+                new Test(){ Major=1, Minor=1 },
+                new Test(){ Major=1, Minor=2 },
+                new Test(){ Major=1, Minor=3 },
+                new Test(){ Major=1, Minor=4 },
+                new Test(){ Major=2, Minor=1 },
+                new Test(){ Major=2, Minor=2 },
+                new Test(){ Major=2, Minor=3 }
+            };
             #endregion
 
             #region test2
@@ -48,32 +48,32 @@ namespace ProficiencyTest.ViewModels
             #endregion
 
             #region test3
-            IList<Test> tests = new List<Test>()
-            {
-                new Test(){ Major=4, Minor=2 },
-                new Test(){ Major=4, Minor=7 },
-                new Test(){ Major=4, Minor=5 },
-                new Test(){ Major=4, Minor=4 },
-                new Test(){ Major=4, Minor=3 },
-                new Test(){ Major=4, Minor=1 },
-                new Test(){ Major=4, Minor=6 },
+            //IList<Test> tests = new List<Test>()
+            //{
+            //    new Test(){ Major=4, Minor=2 },
+            //    new Test(){ Major=4, Minor=7 },
+            //    new Test(){ Major=4, Minor=5 },
+            //    new Test(){ Major=4, Minor=4 },
+            //    new Test(){ Major=4, Minor=3 },
+            //    new Test(){ Major=4, Minor=1 },
+            //    new Test(){ Major=4, Minor=6 },
 
-                new Test(){ Major=2, Minor=3 },
-                new Test(){ Major=1, Minor=1 },
-                new Test(){ Major=1, Minor=4 },
-                new Test(){ Major=2, Minor=1 },
-                new Test(){ Major=1, Minor=3 },
-                new Test(){ Major=2, Minor=2 },
-                new Test(){ Major=1, Minor=2 },
+            //    new Test(){ Major=2, Minor=3 },
+            //    new Test(){ Major=1, Minor=1 },
+            //    new Test(){ Major=1, Minor=4 },
+            //    new Test(){ Major=2, Minor=1 },
+            //    new Test(){ Major=1, Minor=3 },
+            //    new Test(){ Major=2, Minor=2 },
+            //    new Test(){ Major=1, Minor=2 },
 
-                new Test(){ Major=3, Minor=7 },
-                new Test(){ Major=3, Minor=6 },
-                new Test(){ Major=3, Minor=5 },
-                new Test(){ Major=3, Minor=4 },
-                new Test(){ Major=3, Minor=3 },
-                new Test(){ Major=3, Minor=2 },
-                new Test(){ Major=3, Minor=1 },
-            };
+            //    new Test(){ Major=3, Minor=7 },
+            //    new Test(){ Major=3, Minor=6 },
+            //    new Test(){ Major=3, Minor=5 },
+            //    new Test(){ Major=3, Minor=4 },
+            //    new Test(){ Major=3, Minor=3 },
+            //    new Test(){ Major=3, Minor=2 },
+            //    new Test(){ Major=3, Minor=1 },
+            //};
             #endregion
 
             createTree(tests);
