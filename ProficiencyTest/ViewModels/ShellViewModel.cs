@@ -84,6 +84,24 @@ namespace ProficiencyTest.ViewModels
                 }
             }
         }
+        public void Expand()
+        {
+            SetExpand(true);
+        }
+        public void Collapse()
+        {
+            SetExpand(false);
+        }
+        private void SetExpand(bool expand)
+        {
+            if (Parents != null)
+            {
+                foreach (var parent in Parents)
+                {
+                    parent.IsNodeExpanded = expand;
+                }
+            }
+        }
         public void UpdateStates(ChildViewModel? child = null)
         {
             NotifyOfPropertyChange(() => IsBackEnabled); // Update Back button state

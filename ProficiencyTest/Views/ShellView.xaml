@@ -42,6 +42,11 @@
             </Button>
         </DockPanel>
         <TreeView Grid.Row="1" ItemsSource="{Binding Parents, Mode=OneWay}">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="{Binding IsNodeExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type vm:ParentViewModel}" ItemsSource="{Binding Children}">                    
                     <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="3"

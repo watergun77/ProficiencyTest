@@ -45,5 +45,16 @@ namespace ProficiencyTest.ViewModels
                 NotifyOfPropertyChange(() => IsSelected);
             }
         }
+
+        private bool isNodeExpanded = false;
+        public bool IsNodeExpanded
+        {
+            get { return isNodeExpanded; }
+            set 
+            { 
+                isNodeExpanded = value;
+                NotifyOfPropertyChange(() => IsNodeExpanded);
+            }
+        }
     }
 }
