@@ -41,5 +41,6 @@ namespace ProficiencyTest.ViewModels
                 NotifyOfPropertyChange(() => IsSelected);
             }
         }
+        public bool IsNodeExpanded { get; set; } // To remove warning/error : System.Windows.Data Error: 40 : BindingExpression path error.
     }
 }
