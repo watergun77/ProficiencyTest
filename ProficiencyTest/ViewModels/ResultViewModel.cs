@@ -10,7 +10,7 @@ namespace ProficiencyTest.ViewModels
 {
     public class ResultViewModel : Screen
     {
-        public List<Test> SelectedTests { get; set; } = new List<Test>();     
+        public List<ITest> SelectedTests { get; set; } = new List<ITest>();     
 
 
     }

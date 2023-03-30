@@ -5,27 +5,35 @@ namespace ProficiencyTest.ViewModels
 {
     public class ChildViewModel : Screen
     {
-        private Test myTest = new();
-        public Test MyTest
+        private readonly ITest test;
+        public ITest Test => test;
+
+        public ChildViewModel(ITest test)
         {
-            get { return myTest; }
-            set 
-            {
-                myTest = value; 
-            } 
+            this.test = test;
         }
+
+        //private Test myTest = new();
+        //public Test MyTest
+        //{
+        //    get { return myTest; }
+        //    set 
+        //    {
+        //        myTest = value; 
+        //    } 
+        //}
         public int Major 
         { 
             get 
             { 
-                return myTest.Major;
+                return test.Major;
             } 
         }
         public int Minor
         {
             get
             {
-                return myTest.Minor;
+                return test.Minor;
             }
         }
 

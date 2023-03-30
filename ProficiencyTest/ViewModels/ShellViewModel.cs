@@ -85,7 +85,7 @@ namespace ProficiencyTest.ViewModels
             {
                 foreach (var test in tests)
                 {
-                    ChildViewModel child = new ChildViewModel() { MyTest = test };
+                    ChildViewModel child = new ChildViewModel(test);
 
                     if (Parents.Count > 0)
                     {
@@ -258,7 +258,7 @@ namespace ProficiencyTest.ViewModels
                     {
                         if (child.IsSelected)
                         {
-                            resultVm.SelectedTests.Add(child.MyTest);
+                            resultVm.SelectedTests.Add(child.Test);
                         }
                     }
                 }
